@@ -169,9 +169,9 @@ void BoardInitMcu( void )
 
         DelayMs( 1000 ); // 1000 ms for Usb initialization
 #endif
-
+#endif
         RtcInit( );
-
+#if 0
         BoardUnusedIoInit( );
 
         I2cInit( &I2c, I2C_SCL, I2C_SDA );
@@ -182,10 +182,10 @@ void BoardInitMcu( void )
     }
 
     AdcInit( &Adc, BAT_LEVEL );
-
-    SpiInit( &SX1272.Spi, RADIO_MOSI, RADIO_MISO, RADIO_SCLK, NC );
-    SX1272IoInit( );
-
+#endif
+    SpiInit( &SX1276.Spi, RADIO_MOSI, RADIO_MISO, RADIO_SCLK, NC );
+    SX1276IoInit( );
+#if 0
     if( McuInitialized == false )
     {
         McuInitialized = true;
