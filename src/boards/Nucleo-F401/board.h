@@ -80,22 +80,21 @@ Maintainer: Miguel Luis and Gregory Cristian
  * Board MCU pins definitions
  */
 
-#define RADIO_RESET                                 PA_2
+#define RADIO_RESET                                 PA_0
 
 #define RADIO_MOSI                                  PA_7
 #define RADIO_MISO                                  PA_6
 #define RADIO_SCLK                                  PA_5
-#define RADIO_NSS                                   PB_0
+#define RADIO_NSS                                   PB_6
 
-#define RADIO_DIO_0                                 PB_1
-#define RADIO_DIO_1                                 PB_10
-#define RADIO_DIO_2                                 PB_11
-#define RADIO_DIO_3                                 PB_7
-#define RADIO_DIO_4                                 PB_5
-#define RADIO_DIO_5                                 PB_4
+#define RADIO_DIO_0                                 PA_10
+#define RADIO_DIO_1                                 PB_3
+#define RADIO_DIO_2                                 PB_5
+#define RADIO_DIO_3                                 PB_4
+#define RADIO_DIO_4                                 PA_9
+#define RADIO_DIO_5                                 PC_7
 
-#define RADIO_ANT_SWITCH_RX                         PC_13
-#define RADIO_ANT_SWITCH_TX                         PA_4
+#define RADIO_ANT_SWITCH							PC_1
 
 #define OSC_LSE_IN                                  PC_14
 #define OSC_LSE_OUT                                 PC_15
@@ -129,7 +128,7 @@ Maintainer: Miguel Luis and Gregory Cristian
 #define UART_RX                                     PA_10
 
 #define PIN_PB6                                     PB_6
-#define WKUP1                                       PA_0
+//#define WKUP1                                       PA_0
 
 
 /*!

@@ -247,6 +247,7 @@ uint8_t BoardGetBatteryLevel( void )
 
 static void BoardUnusedIoInit( void )
 {
+#if 0
     Gpio_t ioPin;
 
     /* External Connector J5 */
@@ -285,6 +286,7 @@ static void BoardUnusedIoInit( void )
     GpioInit( &ioPin, JTAG_TDI, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
     GpioInit( &ioPin, JTAG_TDO, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
     GpioInit( &ioPin, JTAG_NRST, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+#endif
 #endif
 }
 
