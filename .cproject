@@ -79,7 +79,6 @@
 							<tool id="fr.ac6.managedbuild.tool.gnu.archiver.1476716938" name="MCU GCC Archiver" superClass="fr.ac6.managedbuild.tool.gnu.archiver"/>
 							<tool id="fr.ac6.managedbuild.tool.gnu.cross.assembler.1327523868" name="MCU GCC Assembler" superClass="fr.ac6.managedbuild.tool.gnu.cross.assembler">
 								<option id="gnu.both.asm.option.include.paths.1498175750" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="/home/revzin/workspace/LoRaMac-node/inc"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:${ProjDirPath}/}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.962041470" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
@@ -183,4 +182,5 @@
 			<resource resourceType="PROJECT" workspacePath="/LoRaMac-node"/>
 		</configuration>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>
