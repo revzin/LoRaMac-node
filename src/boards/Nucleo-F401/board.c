@@ -151,18 +151,18 @@ void BoardInitPeriph( void )
 
 void BoardInitMcu( void )
 {
-
-#if 0
     if( McuInitialized == false )
     {
+#if 0
 #if defined( USE_BOOTLOADER )
         // Set the Vector Table base location at 0x3000
         SCB->VTOR = FLASH_BASE | 0x3000;
 #endif
+#endif
         HAL_Init( );
 
         SystemClockConfig( );
-
+#if 0
 #if defined( USE_USB_CDC )
         UartInit( &UartUsb, UART_USB_CDC, NC, NC );
         UartConfig( &UartUsb, RX_TX, 115200, UART_8_BIT, UART_1_STOP_BIT, NO_PARITY, NO_FLOW_CTRL );
@@ -175,12 +175,13 @@ void BoardInitMcu( void )
         BoardUnusedIoInit( );
 
         I2cInit( &I2c, I2C_SCL, I2C_SDA );
+#endif
     }
     else
     {
         SystemClockReConfig( );
     }
-
+#if 0
     AdcInit( &Adc, BAT_LEVEL );
 #endif
     SpiInit( &SX1276.Spi, RADIO_MOSI, RADIO_MISO, RADIO_SCLK, NC );
