@@ -184,25 +184,26 @@ void BoardInitMcu( void )
 #if 0
     AdcInit( &Adc, BAT_LEVEL );
 #endif
-    SpiInit( &SX1276.Spi, RADIO_MOSI, RADIO_MISO, RADIO_SCLK, NC );
+
+    SpiInit( &SX1276.Spi, RADIO_MOSI, RADIO_MISO, RADIO_SCLK, NC);
     SX1276IoInit( );
-#if 0
+
     if( McuInitialized == false )
     {
         McuInitialized = true;
         CalibrateTimer( );
     }
-#endif
 }
 
 void BoardDeInitMcu( void )
 {
-#if 0
+
     Gpio_t ioPin;
 
-    SpiDeInit( &SX1272.Spi );
-    SX1272IoDeInit( );
+    SpiDeInit( &SX1276.Spi );
 
+    SX1276IoDeInit( );
+#if 0
     GpioInit( &ioPin, OSC_HSE_IN, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 1 );
     GpioInit( &ioPin, OSC_HSE_OUT, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 1 );
 

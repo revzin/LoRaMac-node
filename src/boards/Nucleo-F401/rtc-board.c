@@ -203,6 +203,8 @@ TimerTime_t RtcGetElapsedAlarmTime( void )
     RTC_DateTypeDef dateRtc;
     RTC_TimeTypeDef timeRtc;
 
+    _HAL_RTC_WRITEPROTECTION_DISABLE(&RtcHandle);
+
     HAL_RTC_WaitForSynchro( &RtcHandle );
 
     HAL_RTC_GetTime( &RtcHandle, &timeRtc, RTC_FORMAT_BIN );
@@ -244,6 +246,8 @@ TimerTime_t RtcGetTimerValue( void )
     RTC_DateTypeDef dateRtc;
     RTC_TimeTypeDef timeRtc;
 
+    _HAL_RTC_WRITEPROTECTION_DISABLE(&RtcHandle);
+
     HAL_RTC_WaitForSynchro( &RtcHandle );
 
     HAL_RTC_GetTime( &RtcHandle, &timeRtc, RTC_FORMAT_BIN );
@@ -273,6 +277,8 @@ TimerTime_t RtcComputeElapsedTime( TimerTime_t eventInTime )
 
     RTC_DateTypeDef dateRtc;
     RTC_TimeTypeDef timeRtc;
+
+    _HAL_RTC_WRITEPROTECTION_DISABLE(&RtcHandle);
 
     HAL_RTC_WaitForSynchro( &RtcHandle );
 
@@ -361,6 +367,8 @@ static void RtcStartWakeUpAlarm( uint32_t timeoutValue )
     uint8_t timeoutValueHours = 0;
     uint8_t timeoutValueDays = 0;
     float timeoutValueTemp = 0.0;
+
+    _HAL_RTC_WRITEPROTECTION_DISABLE(&RtcHandle);
 
     RTC_AlarmTypeDef AlarmStructure;
     RTC_DateTypeDef dateRtc;
@@ -633,6 +641,7 @@ static void RtcComputeWakeUpTime( void )
 
     if( WakeUpTimeInitialized == false )
     {
+    	_HAL_RTC_WRITEPROTECTION_DISABLE();
         HAL_RTC_WaitForSynchro( &RtcHandle );
 
         HAL_RTC_GetTime( &RtcHandle, &timeRtc, RTC_FORMAT_BIN );
