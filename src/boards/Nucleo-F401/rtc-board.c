@@ -138,6 +138,8 @@ void RtcInit( void )
     {
         __HAL_RCC_RTC_ENABLE( );
 
+        SET_BIT(RCC->CSR, RCC_CSR_LSION);
+
         RtcHandle.Instance = RTC;
         RtcHandle.Init.HourFormat = RTC_HOURFORMAT_24;
         RtcHandle.Init.AsynchPrediv = 1;

@@ -302,11 +302,11 @@ void SystemClockConfig( void )
 
     __HAL_PWR_VOLTAGESCALING_CONFIG( PWR_REGULATOR_VOLTAGE_SCALE1 );
 
-    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_LSE;
-    RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-    RCC_OscInitStruct.LSEState = RCC_LSE_ON;
+    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_LSI;
+    RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+    RCC_OscInitStruct.LSIState = RCC_LSI_ON;
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
    // RCC_OscInitStruct.PLL.PLLMUL = 6;
    // RCC_OscInitStruct.PLL.PLLDIV = 3;
     HAL_RCC_OscConfig( &RCC_OscInitStruct );
@@ -319,7 +319,7 @@ void SystemClockConfig( void )
     HAL_RCC_ClockConfig( &RCC_ClkInitStruct, FLASH_LATENCY_1 );
 
     PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_RTC;
-    PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
+    PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;
     HAL_RCCEx_PeriphCLKConfig( &PeriphClkInit );
 
     HAL_SYSTICK_Config( HAL_RCC_GetHCLKFreq( ) / 1000 );
@@ -349,6 +349,8 @@ void CalibrateTimer( void )
 
 void SystemClockReConfig( void )
 {
+	SystemClockConfig();
+#if 0
     __HAL_RCC_PWR_CLK_ENABLE( );
     __HAL_PWR_VOLTAGESCALING_CONFIG( PWR_REGULATOR_VOLTAGE_SCALE1 );
 
@@ -356,9 +358,10 @@ void SystemClockReConfig( void )
     __HAL_RCC_HSE_CONFIG( RCC_HSE_ON );
 
     /* Wait till HSE is ready */
-    while(__HAL_RCC_GET_FLAG(RCC_FLAG_HSERDY) == RESET)
+    while(READ_BIT(RCC->CR, RCC_CR_HSERDY) == 0)
     {
     }
+
 
     /* Enable PLL */
     __HAL_RCC_PLL_ENABLE( );
@@ -375,6 +378,7 @@ void SystemClockReConfig( void )
     while( __HAL_RCC_GET_SYSCLK_SOURCE( ) != RCC_SYSCLKSOURCE_STATUS_PLLCLK )
     {
     }
+#endif
 }
 
 void SysTick_Handler( void )
